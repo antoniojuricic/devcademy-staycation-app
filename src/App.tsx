@@ -1,9 +1,9 @@
-function App() {
-  return (
-    <div>
+import Main from "./components/Main/Main";
 
-    </div>
+const App = () => {
+  return (
+    <Main />
   );
-}
+};
 
 export default App;
