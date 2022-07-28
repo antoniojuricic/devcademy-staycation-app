@@ -50,8 +50,9 @@ const Main = () => {
       <Header />
       <PopularLocations cards={cityCardData} />
       <PopularHomes cards={AccommodationCardData} />
-      <AccommodationDetails {...accommodationDetailsData} />
       <Footer />
+
+      <AccommodationDetails {...accommodationDetailsData} />
     </div>
   );
 };
