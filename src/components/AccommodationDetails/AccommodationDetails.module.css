@@ -31,14 +31,14 @@
   line-height: 150%;
   letter-spacing: 0.15px;
   color: #7c7c7c;
-  margin-top:12px;
+  margin-top: 12px;
 }
 
 .content {
   margin: 15px;
-  width: 810px;
-  position: relative;
-  float:left;
+  display: flex;
+  justify-content: space-between;
+  gap: 5%;
 }
 
 .cancellationPlaceholder {
@@ -60,5 +60,9 @@
   line-height: 150%;
   letter-spacing: 0.15px;
   color: #1a3440;
+}
 
+.mainInfo {
+  display: flex;
+  flex-direction: column;
 }

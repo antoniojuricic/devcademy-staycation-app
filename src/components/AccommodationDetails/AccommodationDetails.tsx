@@ -21,24 +21,26 @@ const AccommodationDetails = (props: AccommodationDetails) => {
     <div className={styles.container}>
       <img className={styles.image} src={props.image} />
       <div className={styles.content}>
-        <div className={styles.inline}>
-          <div className={styles.title}>{props.title}</div>
-          <Categorization rating={props.rating} />
+        <div className={styles.mainInfo}>
+          <div className={styles.inline}>
+            <div className={styles.title}>{props.title}</div>
+            <Categorization rating={props.rating} />
+          </div>
+          <div className={styles.subtitle}>{props.subtitle}</div>
+          <div className={styles.cancellationPlaceholder}>
+            <img src={calendar} />
+            Free cancellation available
+          </div>
+          <div className={styles.description}>{props.description}</div>
         </div>
-        <div className={styles.subtitle}>{props.subtitle}</div>
-        <div className={styles.cancellationPlaceholder}>
-          <img src={calendar} />
-          Free cancellation available
-        </div>
-        <div className={styles.description}>{props.description}</div>
+        <PropertyInfo
+          personCount={props.personCount}
+          type={props.type}
+          price={props.price}
+          location={props.location}
+          postalCode={props.postalCode}
+        />
       </div>
-      <PropertyInfo
-        personCount={props.personCount}
-        type={props.type}
-        price={props.price}
-        location={props.location}
-        postalCode={props.postalCode}
-      />
     </div>
   );
 };

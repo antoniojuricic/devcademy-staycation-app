@@ -1,10 +1,11 @@
+import React from 'react';
 import Grid from "@mui/material/Grid";
 import styles from "./FeaturedSection.module.css";
 
 type Props = {
   title: string;
   callToAction: string;
-  children?: JSX.Element | JSX.Element[];
+  children: React.ReactNode;
 };
 
 const FeaturedSection = (props: Props) => {
