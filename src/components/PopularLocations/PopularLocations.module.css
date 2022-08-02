@@ -1,0 +1,27 @@
+.bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 41px;
+}
+h4 {
+  font-weight: 400;
+  font-size: 34px;
+  line-height: 120%;
+  letter-spacing: 0.25px;
+  color: #000000;
+}
+
+.viewAll {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 26px;
+  letter-spacing: 0.46px;
+  text-transform: uppercase;
+  color: #40e0d0;
+}
+
+.section {
+  margin: 90px;
+}
