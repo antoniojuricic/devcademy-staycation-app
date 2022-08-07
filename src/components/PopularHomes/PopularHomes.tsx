@@ -1,10 +1,10 @@
 import FeaturedSection from "../FeaturedSection/FeaturedSection";
-import AccommodationCard from "../AccommodationCard/AccommodationCard";
+import AccommodationCard from "../Cards/AccommodationCard/AccommodationCard";
 import Grid from "@mui/material/Grid";
 
 const PopularHomes = ({ cards }: { cards: AccommodationCard[] }) => {
   return (
-    <FeaturedSection title="Homes guests love" callToAction="View all homes">
+    <FeaturedSection title="Homes guests love" callToAction="View all homes" slug="favorites">
       {cards.map((place) => (
         <Grid item xs={3}>
           <AccommodationCard
