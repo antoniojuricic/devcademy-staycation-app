@@ -1,4 +1,3 @@
-import Grid from "@mui/material/Grid";
 import styles from "./CityCard.module.css";
 
 type CityCard = { name: string; count: number; image: string };
