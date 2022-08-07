@@ -1,0 +1,12 @@
+.container {
+    margin: 30px 90px;
+}
+.title {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 34px;
+  line-height: 120%;
+  letter-spacing: 0.25px;
+  color: #000000;
+  margin-bottom:50px;
+}
