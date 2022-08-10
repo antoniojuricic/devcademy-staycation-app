@@ -1,5 +1,5 @@
 import styles from "./AccommodationCard.module.css";
-import Categorization from "../Categorization";
+import Categorization from "../../Categorization";
 
 type AccommodationCard = {
   rating: number;

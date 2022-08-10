@@ -1,32 +1,15 @@
 import Navigation from "../Navigation/Navigation";
-import Header from "../Header/Header";
-import PopularLocations from "../PopularLocations/PopularLocations";
-import PopularHomes from "../PopularHomes/PopularHomes";
 import Footer from "../Footer/Footer";
 import "./Main.css";
-import AccommodationDetails from "../AccommodationDetails/AccommodationDetails";
-
-import accommodationCardImage from "../../assets/split.png";
-import cityCardImage from "../../assets/london.png";
+import { Routes, Route } from "react-router-dom";
 import accommodationDetailsImage from "../../assets/mykonos.png";
-
-const AccommodationCardData = [
-  {
-    title: "Sugar & Spice Apartments",
-    location: "Split",
-    price: 75,
-    rating: 3,
-    image: accommodationCardImage,
-  },
-];
-
-const cityCardData = [
-  {
-    name: "London",
-    count: 5102,
-    image: cityCardImage,
-  },
-];
+import Home from "../../pages/Home";
+import Favorites from "../../pages/Favorites/Favorites";
+import { Locations } from "../../pages/Locations/Locations";
+import Reservation from "../../pages/Reservation/Reservation";
+import MyPlaces from "../../pages/MyPlaces";
+import MyBookings from "../../pages/MyBookings";
+import ReservationForm from "../Forms/ReservationForm";
 
 const accommodationDetailsData = {
   title: "Poseidon Hotel Suites",
@@ -47,12 +30,14 @@ const Main = () => {
   return (
     <div>
       <Navigation />
-      <Header />
-      <PopularLocations cards={cityCardData} />
-      <PopularHomes cards={AccommodationCardData} />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/favorites" element={<Favorites />} />
+        <Route path="/locations" element={<Locations />} />
+        <Route path="/my-places" element={<MyPlaces />} />
+        <Route path="/my-bookings" element={<MyBookings />} />
+      </Routes>
       <Footer />
-
-      <AccommodationDetails {...accommodationDetailsData} />
     </div>
   );
 };

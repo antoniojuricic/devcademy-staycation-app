@@ -1,0 +1,20 @@
+.container {
+    margin:90px;
+}
+
+.content {
+    display:flex;
+    gap: 140px;
+}
+
+.form {
+    flex: 1;
+}
+
+.card {
+    flex:1;
+}
+
+.title {
+    margin-bottom:45px;
+}

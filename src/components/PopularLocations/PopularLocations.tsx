@@ -1,5 +1,5 @@
 import FeaturedSection from "../FeaturedSection/FeaturedSection";
-import CityCard from "../CityCard/CityCard";
+import CityCard from "../Cards/CityCard/CityCard";
 import Grid from "@mui/material/Grid";
 
 const PopularLocations = ({ cards }: { cards: CityCard[] }) => {
@@ -7,6 +7,7 @@ const PopularLocations = ({ cards }: { cards: CityCard[] }) => {
     <FeaturedSection
       title="Popular locations"
       callToAction="View all locations"
+      slug="favorites"
     >
       {cards.map((city) => (
         <Grid item xs={4}>
