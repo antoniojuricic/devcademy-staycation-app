@@ -2,20 +2,23 @@ import { Box, Button, TextField } from "@mui/material";
 import { useState } from "react";
 
 const ReservationForm = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [guests, setGuests] = useState("");
-  const [checkIn, setCheckIn] = useState("");
-  const [checkOut, setCheckOut] = useState("");
+  const [formValues, setFormValues] = useState({
+    name: "",
+    email: "",
+    guests: "",
+    checkIn: "",
+    checkOut: "",
+  });
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    console.log(name);
-    console.log(email);
-    console.log(guests);
-    console.log(checkIn);
-    console.log(checkOut);
+    console.log(formValues);
   }
+
+  const handleChange = (event: any) => {
+    setFormValues({ ...formValues, [event.target.name]: event.target.value });
+  };
+
   return (
     <Box
       component="form"
@@ -26,27 +29,30 @@ const ReservationForm = () => {
     >
       <TextField
         id="name"
+        name="name"
         label="Full name"
         variant="outlined"
-        onChange={(e) => setName(e.target.value)}
-        value={name}
+        onChange={handleChange}
+        value={formValues.name}
       />
       <br />
       <TextField
         id="email"
+        name="email"
         label="Email address"
         variant="outlined"
-        onChange={(e) => setEmail(e.target.value)}
-        value={email}
+        onChange={handleChange}
+        value={formValues.email}
       />
       <br />
       <TextField
         id="guests"
+        name="guests"
         type="number"
         label="Number of guests"
         variant="outlined"
-        onChange={(e) => setGuests(e.target.value)}
-        value={guests}
+        onChange={handleChange}
+        value={formValues.guests}
       />
       <br />
       <div
@@ -59,21 +65,23 @@ const ReservationForm = () => {
       >
         <TextField
           id="check-in"
+          name="checkIn"
           label="Check in"
           type="date"
           InputLabelProps={{ shrink: true }}
           fullWidth
-          onChange={(e) => setCheckIn(e.target.value)}
-          value={checkIn}
+          onChange={handleChange}
+          value={formValues.checkIn}
         />
         <TextField
           id="check-out"
+          name="checkOut"
           label="Check out"
           type="date"
           InputLabelProps={{ shrink: true }}
           fullWidth
-          onChange={(e) => setCheckOut(e.target.value)}
-          value={checkOut}
+          onChange={handleChange}
+          value={formValues.checkOut}
         />
       </div>
       <Button

@@ -3,24 +3,30 @@ import Box from "@mui/material/Box";
 import styles from "./AdvancedSearch.module.css";
 import type {} from "@mui/x-date-pickers/themeAugmentation";
 import SearchButton from "../SearchButton";
-import { CheckInField } from "../CheckInField";
-import { CheckOutField } from "../CheckOutField";
+import { CustomDateField } from "../CustomDateField";
 import { PersonField } from "../PersonField";
-import { TypeField } from "../TypeField";
+import { CustomSelectField } from "../CustomSelectField";
+import KingBedIcon from "@mui/icons-material/KingBed";
+import { KingBed } from "@mui/icons-material";
+import HotelIcon from "@mui/icons-material/Hotel";
 
 const AdvancedSearch = () => {
-  const [checkIn, setCheckIn] = useState("");
-  const [checkOut, setCheckOut] = useState("");
-  const [people, setPeople] = useState("");
-  const [type, setType] = useState("");
+  const [formValues, setFormValues] = useState({
+    checkIn: "",
+    checkOut: "",
+    people: "",
+    type: "",
+  });
 
+  const handleChange = (event: any) => {
+    setFormValues({ ...formValues, [event.target.name]: event.target.value });
+  };
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    console.log(checkIn);
-    console.log(checkOut);
-    console.log(people);
-    console.log(type);
   }
+
+  const typesData = [{ name: "room", value: "Room" }];
+
   return (
     <div>
       <Box
@@ -30,13 +36,35 @@ const AdvancedSearch = () => {
         className={styles.form}
         onSubmit={handleSubmit}
       >
-        <CheckInField checkInValue={checkIn} setCheckInValue={setCheckIn} />
-        <CheckOutField
-          checkOutValue={checkOut}
-          setCheckOutValue={setCheckOut}
+        <CustomDateField
+          id="checkIn"
+          name="checkIn"
+          label="Check in"
+          currentValue={formValues.checkIn}
+          changeHandler={handleChange}
         />
-        <PersonField personValue={people} setPersonValue={setPeople} />
-        <TypeField typeValue={type} setTypeValue={setType} />
+        <CustomDateField
+          id="checkOut"
+          name="checkOut"
+          label="Check out"
+          currentValue={formValues.checkOut}
+          changeHandler={handleChange}
+        />
+
+        <PersonField
+          currentValue={formValues.people}
+          changeHandler={handleChange}
+        />
+
+        <CustomSelectField
+          id="type"
+          name="type"
+          label="What type of accommodation?"
+          selectOptions={typesData}
+          currentValue={formValues.type}
+          changeHandler={handleChange}
+          icon={<HotelIcon />}
+        />
         <SearchButton />
       </Box>
     </div>

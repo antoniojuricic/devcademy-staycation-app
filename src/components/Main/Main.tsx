@@ -9,6 +9,7 @@ import { Locations } from "../../pages/Locations/Locations";
 import Reservation from "../../pages/Reservation/Reservation";
 import MyPlaces from "../../pages/MyPlaces";
 import MyBookings from "../../pages/MyBookings";
+import ReservationForm from "../Forms/ReservationForm";
 
 const accommodationDetailsData = {
   title: "Poseidon Hotel Suites",

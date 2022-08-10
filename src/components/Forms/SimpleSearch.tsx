@@ -2,15 +2,28 @@ import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import type {} from "@mui/x-date-pickers/themeAugmentation";
 import SearchButton from "./SearchButton";
-import { LocationField } from "./LocationField";
+import { CustomSelectField } from "./CustomSelectField";
+import KingBedIcon from "@mui/icons-material/KingBed";
 
 const SimpleSearch = () => {
-  const [location, setLocation] = useState("");
+  const [formValues, setFormValues] = useState({
+    location: "",
+  });
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    console.log(location);
+    console.log(formValues);
   }
+
+  const handleChange = (event: any) => {
+    setFormValues({ ...formValues, [event.target.name]: event.target.value });
+  };
+
+  const locationsData = [
+    { name: "london", value: "London" },
+    { name: "split", value: "Split" },
+  ];
+
   return (
     <div>
       <Box
@@ -19,9 +32,14 @@ const SimpleSearch = () => {
         autoComplete="off"
         onSubmit={handleSubmit}
       >
-        <LocationField
-          locationValue={location}
-          setLocationValue={setLocation}
+        <CustomSelectField
+          id="location"
+          name="location"
+          label="Where are you going?"
+          selectOptions={locationsData}
+          currentValue={formValues.location}
+          changeHandler={handleChange}
+          icon={<KingBedIcon />}
         />
         <SearchButton />
       </Box>

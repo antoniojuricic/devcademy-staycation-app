@@ -3,27 +3,38 @@ import Box from "@mui/material/Box";
 import styles from "./AccommodationSearch.module.css";
 import type {} from "@mui/x-date-pickers/themeAugmentation";
 import SearchButton from "../SearchButton";
-import { LocationField } from "../LocationField";
-import { CheckInField } from "../CheckInField";
-import { CheckOutField } from "../CheckOutField";
+import { CustomSelectField } from "../CustomSelectField";
+import { CustomDateField } from "../CustomDateField";
 import { PersonField } from "../PersonField";
-import { TypeField } from "../TypeField";
+import KingBedIcon from "@mui/icons-material/KingBed";
+import { KingBed } from "@mui/icons-material";
+import HotelIcon from "@mui/icons-material/Hotel";
 
 const AccommodationSearch = () => {
-  const [location, setLocation] = useState("");
-  const [checkIn, setCheckIn] = useState("");
-  const [checkOut, setCheckOut] = useState("");
-  const [people, setPeople] = useState("");
-  const [type, setType] = useState("");
+  const [formValues, setFormValues] = useState({
+    location: "",
+    checkIn: "",
+    checkOut: "",
+    people: "",
+    type: "",
+  });
 
+  const handleChange = (event: any) => {
+    setFormValues({ ...formValues, [event.target.name]: event.target.value });
+  };
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    console.log(location);
-    console.log(checkIn);
-    console.log(checkOut);
-    console.log(people);
-    console.log(type);
+    console.log(formValues);
   }
+
+  const typesData = [
+    { name: "room", value: "Room" },
+    { name: "apartment", value: "Apartment" },
+  ];
+  const locationsData = [
+    { name: "london", value: "London" },
+    { name: "split", value: "Split" },
+  ];
 
   return (
     <div className={styles.container}>
@@ -34,17 +45,45 @@ const AccommodationSearch = () => {
         className={styles.form}
         onSubmit={handleSubmit}
       >
-        <LocationField
-          locationValue={location}
-          setLocationValue={setLocation}
+        <CustomSelectField
+          id="location"
+          name="location"
+          label="Where are you going?"
+          selectOptions={locationsData}
+          currentValue={formValues.location}
+          changeHandler={handleChange}
+          icon={<KingBedIcon />}
         />
-        <CheckInField checkInValue={checkIn} setCheckInValue={setCheckIn} />
-        <CheckOutField
-          checkOutValue={checkOut}
-          setCheckOutValue={setCheckOut}
+        <CustomDateField
+          id="checkIn"
+          name="checkIn"
+          label="Check in"
+          currentValue={formValues.checkIn}
+          changeHandler={handleChange}
         />
-        <PersonField personValue={people} setPersonValue={setPeople} />
-        <TypeField typeValue={type} setTypeValue={setType} />
+        <CustomDateField
+          id="checkOut"
+          name="checkOut"
+          label="Check out"
+          currentValue={formValues.checkOut}
+          changeHandler={handleChange}
+        />
+
+        <PersonField
+          currentValue={formValues.people}
+          changeHandler={handleChange}
+        />
+
+        <CustomSelectField
+          id="type"
+          name="type"
+          label="What type of accommodation?"
+          selectOptions={typesData}
+          currentValue={formValues.type}
+          changeHandler={handleChange}
+          icon={<HotelIcon />}
+        />
+
         <SearchButton />
       </Box>
     </div>
