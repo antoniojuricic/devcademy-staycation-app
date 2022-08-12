@@ -7,7 +7,6 @@ import { CustomSelectField } from "../CustomSelectField";
 import { CustomDateField } from "../CustomDateField";
 import { PersonField } from "../PersonField";
 import KingBedIcon from "@mui/icons-material/KingBed";
-import { KingBed } from "@mui/icons-material";
 import HotelIcon from "@mui/icons-material/Hotel";
 
 const AccommodationSearch = () => {

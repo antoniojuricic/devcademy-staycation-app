@@ -9,8 +9,8 @@ const PopularLocations = ({ cards }: { cards: CityCard[] }) => {
       callToAction="View all locations"
       slug="favorites"
     >
-      {cards.map((city) => (
-        <Grid item xs={4}>
+      {cards.map((city, index) => (
+        <Grid item xs={index < 2 ? 6 : 4}>
           <CityCard name={city.name} count={city.count} image={city.image} />
         </Grid>
       ))}
