@@ -3,7 +3,7 @@ import lemon from "./../assets/lemon.png";
 import cancun from "./../assets/cancun.png";
 import phuket from "./../assets/phuket.png";
 
-export const AccommodationCardData = [
+export const accommodationCardData = [
   {
     title: "Sugar & Spice Apartments",
     location: "Split",
