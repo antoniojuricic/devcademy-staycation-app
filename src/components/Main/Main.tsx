@@ -7,9 +7,11 @@ import Home from "../../pages/Home";
 import Favorites from "../../pages/Favorites/Favorites";
 import { Locations } from "../../pages/Locations/Locations";
 import Reservation from "../../pages/Reservation/Reservation";
-import MyPlaces from "../../pages/MyPlaces";
+import MyPlaces from "../../pages/MyPlaces/MyPlaces";
 import MyBookings from "../../pages/MyBookings";
 import ReservationForm from "../Forms/ReservationForm";
+import AddNewPlace from "../../pages/AddNewPlace/AddNewPlace";
+import { AccommodationsByLocation } from "../../pages/AccommodationsByLocation/AccommodationsByLocation";
 
 const accommodationDetailsData = {
   title: "Poseidon Hotel Suites",
@@ -36,6 +38,8 @@ const Main = () => {
         <Route path="/locations" element={<Locations />} />
         <Route path="/my-places" element={<MyPlaces />} />
         <Route path="/my-bookings" element={<MyBookings />} />
+        <Route path="/add-new-place" element={<AddNewPlace />} />
+        <Route path="/search" element={<AccommodationsByLocation />} />
       </Routes>
       <Footer />
     </div>

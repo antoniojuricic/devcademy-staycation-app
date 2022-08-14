@@ -1,0 +1,11 @@
+.title {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 34px;
+  line-height: 120%;
+  margin-bottom: 40px;
+}
+
+.container {
+    margin: 60px 90px;
+}

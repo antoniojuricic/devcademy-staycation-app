@@ -6,8 +6,10 @@ type Props = {
   name: string;
   label: string;
   selectOptions: { name: string; value: string }[];
-  icon: ReactNode;
+  icon?: ReactNode;
   currentValue: string;
+  style?: React.CSSProperties;
+  shrink?: boolean;
   changeHandler: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
@@ -21,11 +23,11 @@ export const CustomSelectField = (props: Props) => {
       name={props.name}
       value={props.currentValue}
       InputProps={{
-        startAdornment: (
+        startAdornment: props.icon && (
           <InputAdornment position="start">{props.icon}</InputAdornment>
         ),
       }}
-      style={{ width: 200 }}
+      style={props.style}
     >
       {props.selectOptions.map((option) => (
         <MenuItem key={option.name} value={option.value}>

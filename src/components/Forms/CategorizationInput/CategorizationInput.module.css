@@ -1,0 +1,23 @@
+button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.on {
+  color: #f3b08e;
+}
+.off {
+  color: #ccc;
+}
+
+.categorizationInput {
+  display: flex;
+  justify-content: space-between;
+}
+
+.starRating {
+  display: flex;
+  gap: 5px;
+}

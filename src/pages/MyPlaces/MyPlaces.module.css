@@ -1,0 +1,16 @@
+.title {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 34px;
+  line-height: 120%;
+}
+
+.container {
+  margin: 60px 90px;
+}
+
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
