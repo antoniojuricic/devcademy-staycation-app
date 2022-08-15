@@ -9,6 +9,7 @@ import { CustomSelectField } from "../CustomSelectField";
 import KingBedIcon from "@mui/icons-material/KingBed";
 import { KingBed } from "@mui/icons-material";
 import HotelIcon from "@mui/icons-material/Hotel";
+import { typesData } from "../../../data/typesData";
 
 const AdvancedSearch = () => {
   const [formValues, setFormValues] = useState({
@@ -24,8 +25,6 @@ const AdvancedSearch = () => {
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
   }
-
-  const typesData = [{ name: "room", value: "Room" }];
 
   return (
     <div>

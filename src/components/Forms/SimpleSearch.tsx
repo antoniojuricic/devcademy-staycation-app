@@ -4,6 +4,7 @@ import type {} from "@mui/x-date-pickers/themeAugmentation";
 import SearchButton from "./SearchButton";
 import { CustomSelectField } from "./CustomSelectField";
 import KingBedIcon from "@mui/icons-material/KingBed";
+import { locationsData } from "../../data/locationsData";
 
 const SimpleSearch = () => {
   const [formValues, setFormValues] = useState({
@@ -18,11 +19,6 @@ const SimpleSearch = () => {
   const handleChange = (event: any) => {
     setFormValues({ ...formValues, [event.target.name]: event.target.value });
   };
-
-  const locationsData = [
-    { name: "london", value: "London" },
-    { name: "split", value: "Split" },
-  ];
 
   return (
     <div>
@@ -40,6 +36,7 @@ const SimpleSearch = () => {
           currentValue={formValues.location}
           changeHandler={handleChange}
           icon={<KingBedIcon />}
+          style={{width:200}}
         />
         <SearchButton />
       </Box>

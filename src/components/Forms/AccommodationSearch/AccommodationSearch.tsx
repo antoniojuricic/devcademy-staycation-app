@@ -7,8 +7,10 @@ import { CustomSelectField } from "../CustomSelectField";
 import { CustomDateField } from "../CustomDateField";
 import { PersonField } from "../PersonField";
 import KingBedIcon from "@mui/icons-material/KingBed";
-import { KingBed } from "@mui/icons-material";
 import HotelIcon from "@mui/icons-material/Hotel";
+import { typesData } from "../../../data/typesData";
+import { locationsData } from "../../../data/locationsData";
+import { useNavigate } from "react-router-dom";
 
 const AccommodationSearch = () => {
   const [formValues, setFormValues] = useState({
@@ -19,22 +21,15 @@ const AccommodationSearch = () => {
     type: "",
   });
 
+  const navigate = useNavigate();
+
   const handleChange = (event: any) => {
     setFormValues({ ...formValues, [event.target.name]: event.target.value });
   };
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(formValues);
-  }
-
-  const typesData = [
-    { name: "room", value: "Room" },
-    { name: "apartment", value: "Apartment" },
-  ];
-  const locationsData = [
-    { name: "london", value: "London" },
-    { name: "split", value: "Split" },
-  ];
+    navigate("/search", { state: { location: formValues.location } });
+  };
 
   return (
     <div className={styles.container}>
@@ -53,6 +48,7 @@ const AccommodationSearch = () => {
           currentValue={formValues.location}
           changeHandler={handleChange}
           icon={<KingBedIcon />}
+          style={{ width: 200 }}
         />
         <CustomDateField
           id="checkIn"
@@ -82,8 +78,8 @@ const AccommodationSearch = () => {
           currentValue={formValues.type}
           changeHandler={handleChange}
           icon={<HotelIcon />}
+          style={{ width: 200 }}
         />
-
         <SearchButton />
       </Box>
     </div>
