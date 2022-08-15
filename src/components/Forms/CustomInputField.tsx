@@ -12,16 +12,5 @@ type Props = {
 };
 
 export const CustomInputField = (props: Props) => {
-  return (
-    <TextField
-      type={props.type}
-      multiline={props.multiline}
-      id={props.id}
-      name={props.name}
-      label={props.label}
-      onChange={props.changeHandler}
-      value={props.currentValue}
-      InputLabelProps={{ shrink: props.shrink }}
-    />
-  );
+  return <TextField {...props} />;
 };
