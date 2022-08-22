@@ -6,8 +6,6 @@ import SearchButton from "../SearchButton";
 import { CustomDateField } from "../CustomDateField";
 import { PersonField } from "../PersonField";
 import { CustomSelectField } from "../CustomSelectField";
-import KingBedIcon from "@mui/icons-material/KingBed";
-import { KingBed } from "@mui/icons-material";
 import HotelIcon from "@mui/icons-material/Hotel";
 import { typesData } from "../../../data/typesData";
 
@@ -27,7 +25,7 @@ const AdvancedSearch = () => {
   }
 
   return (
-    <div>
+    <div className={styles.form}>
       <Box
         component="form"
         noValidate
@@ -39,29 +37,26 @@ const AdvancedSearch = () => {
           id="checkIn"
           name="checkIn"
           label="Check in"
-          currentValue={formValues.checkIn}
-          changeHandler={handleChange}
+          value={formValues.checkIn}
+          onChange={handleChange}
         />
         <CustomDateField
           id="checkOut"
           name="checkOut"
           label="Check out"
-          currentValue={formValues.checkOut}
-          changeHandler={handleChange}
+          value={formValues.checkOut}
+          onChange={handleChange}
         />
 
-        <PersonField
-          currentValue={formValues.people}
-          changeHandler={handleChange}
-        />
+        <PersonField value={formValues.people} onChange={handleChange} />
 
         <CustomSelectField
           id="type"
           name="type"
           label="What type of accommodation?"
           selectOptions={typesData}
-          currentValue={formValues.type}
-          changeHandler={handleChange}
+          value={formValues.type}
+          onChange={handleChange}
           icon={<HotelIcon />}
         />
         <SearchButton />
