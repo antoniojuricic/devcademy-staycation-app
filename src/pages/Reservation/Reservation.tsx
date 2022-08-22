@@ -1,38 +1,39 @@
 import ReservationCard from "../../components/Cards/ReservationCard/ReservationCard";
 import ReservationForm from "../../components/Forms/ReservationForm";
 import styles from "./Reservation.module.css";
-import ReservationImage from "../../assets/mykonos.png";
-
-const ReservationData = {
-  title: "Poseidon Hotel Suites",
-  type: "Room",
-  rating: 5,
-  image: ReservationImage,
-  price: 500,
-  location: "Mýkonos City",
-  postalCode: "846 00",
-};
+import { useParams } from "react-router-dom";
+import useAxios from "../../hooks/useAxios";
 
 const Reservation = () => {
+  let { id } = useParams();
+
+  const { response, error } = useAxios({
+    url: "/Accomodations/" + id,
+    method: "get",
+  });
+
   return (
     <div className={styles.container}>
       <h4 className={styles.title}>Book your stay</h4>
-      <div className={styles.content}>
-        <div className={styles.form}>
-          <ReservationForm />
+      {error && "There was an error"}
+      {response && (
+        <div className={styles.content}>
+          <div className={styles.form}>
+            <ReservationForm data={response?.data} />
+          </div>
+          <div className={styles.card}>
+            <ReservationCard
+              title={response?.data.title}
+              type={response?.data.type}
+              rating={response?.data.categorization}
+              image={response?.data.imageUrl}
+              price={response?.data.price}
+              location={response?.data.location.name}
+              postalCode={response?.data.location.postalCode}
+            />
+          </div>
         </div>
-        <div className={styles.card}>
-          <ReservationCard
-            title={ReservationData.title}
-            type={ReservationData.type}
-            rating={ReservationData.rating}
-            image={ReservationData.image}
-            price={ReservationData.price}
-            location={ReservationData.location}
-            postalCode={ReservationData.postalCode}
-          />
-        </div>
-      </div>
+      )}
     </div>
   );
 };

@@ -2,43 +2,43 @@ import Categorization from "../Categorization";
 import PropertyInfo from "../PropertyInfo/PropertyInfo";
 import calendar from "../../assets/calendar.svg";
 import styles from "./AccommodationDetails.module.css";
+import { useParams } from "react-router-dom";
+import useAxios from "../../hooks/useAxios";
 
-type AccommodationDetails = {
-  image: string;
-  title: string;
-  subtitle: string;
-  description: string;
-  rating: number;
-  personCount: number;
-  type: string;
-  price: number;
-  location: string;
-  postalCode: string;
-};
+const AccommodationDetails = () => {
+  let { id } = useParams();
+  const { response, loading, error } = useAxios({
+    method: "get",
+    url: "/Accomodations/" + id,
+  });
 
-const AccommodationDetails = (props: AccommodationDetails) => {
+  if (loading) return <h1>Loading...</h1>;
+
   return (
     <div className={styles.container}>
-      <img className={styles.image} src={props.image} />
+      <img className={styles.image} src={response?.data.imageUrl} />
       <div className={styles.content}>
         <div className={styles.mainInfo}>
           <div className={styles.inline}>
-            <div className={styles.title}>{props.title}</div>
-            <Categorization rating={props.rating} />
+            <div className={styles.title}>{response?.data.title}</div>
+            <Categorization rating={response?.data.categorization} />
           </div>
-          <div className={styles.subtitle}>{props.subtitle}</div>
-          <div className={styles.cancellationPlaceholder}>
-            <img src={calendar} />
-            Free cancellation available
-          </div>
-          <div className={styles.description}>{props.description}</div>
+          <div className={styles.subtitle}>{response?.data.subtitle}</div>
+          {response?.data.freeCancellation && (
+            <div className={styles.cancellationPlaceholder}>
+              <img src={calendar} />
+              Free cancellation available
+            </div>
+          )}
+          <div className={styles.description}>{response?.data.description}</div>
         </div>
         <PropertyInfo
-          personCount={props.personCount}
-          type={props.type}
-          price={props.price}
-          location={props.location}
-          postalCode={props.postalCode}
+          id={response?.data.id}
+          personCount={response?.data.personCount}
+          type={response?.data.type}
+          price={response?.data.price}
+          location={response?.data.location.name}
+          postalCode={response?.data.location.postalCode}
         />
       </div>
     </div>
