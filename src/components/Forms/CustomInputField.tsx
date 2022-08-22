@@ -5,10 +5,14 @@ type Props = {
   id: string;
   name: string;
   label: string;
-  currentValue: string | number;
+  value: string | number;
   shrink?: boolean;
   multiline?: boolean;
-  changeHandler: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  inputProps?: any;
+  required?: boolean;
+  error?: boolean;
+  helperText?: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export const CustomInputField = (props: Props) => {

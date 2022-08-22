@@ -3,7 +3,7 @@ import starIcon from "../assets/star.svg";
 const Categorization = ({ rating }: { rating: number }) => {
   const ratingArr = [];
   for (var i = 0; i < rating; i++) {
-    ratingArr.push(<img src={starIcon} />);
+    ratingArr.push(<img src={starIcon} key={i} />);
   }
   return <div>{ratingArr}</div>;
 };
