@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
 import styles from "./PropertyInfo.module.css";
 
 type PropertyInfo = {
+  id: string;
   personCount: number;
   type: string;
   price: number;
@@ -19,7 +21,7 @@ const PropertyInfo = (props: PropertyInfo) => {
         <span>{props.location}</span>
         <span>{props.postalCode}</span>
       </div>
-      <div className={styles.button}>Book your stay</div>
+      <Link to={"/reservation/" + props.id}><div className={styles.button}>Book your stay</div></Link>
     </div>
   );
 };

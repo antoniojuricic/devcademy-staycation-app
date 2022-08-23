@@ -1,6 +1,6 @@
 import styles from "./CityCard.module.css";
 
-type CityCard = { name: string; count: number; image: string };
+type CityCard = { name: string; count: number; image: string; id: string };
 
 const CityCard = (props: CityCard) => {
   const image = props.image;

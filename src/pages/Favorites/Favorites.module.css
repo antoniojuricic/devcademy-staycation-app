@@ -1,5 +1,5 @@
 .container {
-    margin: 30px 90px;
+  margin: 30px 90px;
 }
 .title {
   font-style: normal;
@@ -8,5 +8,9 @@
   line-height: 120%;
   letter-spacing: 0.25px;
   color: #000000;
-  margin-bottom:50px;
+  margin-bottom: 50px;
+}
+
+.topBar {
+  margin-bottom: 20px;
 }

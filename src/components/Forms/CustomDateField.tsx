@@ -4,8 +4,8 @@ type Props = {
   id: string;
   name: string;
   label: string;
-  currentValue: string;
-  changeHandler: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  value: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export const CustomDateField = (props: Props) => {
@@ -15,8 +15,8 @@ export const CustomDateField = (props: Props) => {
       id={props.id}
       name={props.name}
       label={props.label}
-      onChange={props.changeHandler}
-      value={props.currentValue}
+      onChange={props.onChange}
+      value={props.value}
       InputLabelProps={{ shrink: true }}
     />
   );

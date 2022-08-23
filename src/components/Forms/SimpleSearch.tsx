@@ -1,24 +1,52 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import type {} from "@mui/x-date-pickers/themeAugmentation";
 import SearchButton from "./SearchButton";
 import { CustomSelectField } from "./CustomSelectField";
 import KingBedIcon from "@mui/icons-material/KingBed";
-import { locationsData } from "../../data/locationsData";
+import useAxios from "../../hooks/useAxios";
+import { useNavigate } from "react-router-dom";
+
+type Locations = {
+  name: string;
+  value: string;
+};
 
 const SimpleSearch = () => {
   const [formValues, setFormValues] = useState({
     location: "",
   });
 
+  const navigate = useNavigate();
+
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    console.log(formValues);
+    var result = locationData.find((obj: any) => {
+      return obj.value === formValues.location;
+    });
+    navigate("/location", { state: { location: result } });
   }
 
-  const handleChange = (event: any) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormValues({ ...formValues, [event.target.name]: event.target.value });
   };
+
+  const { response, loading, error } = useAxios({
+    url: "/location",
+    method: "get",
+  });
+
+  const [locationData, setLocationData] = useState<Locations[]>([]);
+
+  useEffect(() => {
+    if (response) {
+      let locations = response.data.map((location: any) => ({
+        name: location.id,
+        value: location.name,
+      }));
+      setLocationData(locations);
+    }
+  }, [response]);
 
   return (
     <div>
@@ -32,11 +60,11 @@ const SimpleSearch = () => {
           id="location"
           name="location"
           label="Where are you going?"
-          selectOptions={locationsData}
-          currentValue={formValues.location}
-          changeHandler={handleChange}
+          selectOptions={locationData}
+          value={formValues.location}
+          onChange={handleChange}
           icon={<KingBedIcon />}
-          style={{width:200}}
+          style={{ width: 200 }}
         />
         <SearchButton />
       </Box>

@@ -2,8 +2,8 @@ import { InputAdornment, MenuItem, TextField } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 
 type Props = {
-  currentValue: string;
-  changeHandler: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  value: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export const PersonField = (props: Props) => {
@@ -13,8 +13,8 @@ export const PersonField = (props: Props) => {
       type="number"
       name="people"
       label="How many people?"
-      onChange={props.changeHandler}
-      value={props.currentValue}
+      onChange={props.onChange}
+      value={props.value}
       InputProps={{
         startAdornment: (
           <InputAdornment position="start">

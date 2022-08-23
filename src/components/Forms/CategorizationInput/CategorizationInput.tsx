@@ -6,6 +6,7 @@ import styles from "./CategorizationInput.module.css";
 type Props = {
   rating: number;
   clickHandler: (event: React.MouseEvent<HTMLElement>, rating: number) => void;
+  error: boolean;
 };
 
 export const CategorizationInput = (props: Props) => {
@@ -14,39 +15,51 @@ export const CategorizationInput = (props: Props) => {
   });
 
   return (
-    <div className={styles.categorizationInput}>
-      <div className={styles.title}>Categorization</div>
-      <div className={styles.starRating}>
-        {[...Array(5)].map((star, index) => {
-          return (
-            <button
-              type="button"
-              name="categorization"
-              key={index}
-              className={
-                ++index <= (inputValue.hover || props.rating)
-                  ? styles.on
-                  : styles.off
-              }
-              onClick={(e) => props.clickHandler(e, index)}
-              onMouseEnter={() =>
-                setInputValue({ ...inputValue, hover: index })
-              }
-              onMouseLeave={() =>
-                setInputValue({ ...inputValue, hover: props.rating })
-              }
-            >
-              <div className={styles.star}>
-                {index <= (inputValue.hover || props.rating) ? (
-                  <StarIcon sx={{ fontSize: "20px" }} />
-                ) : (
-                  <StarOutlineIcon sx={{ fontSize: "20px" }} />
-                )}
-              </div>
-            </button>
-          );
-        })}
+    <>
+      <div className={styles.categorizationInput}>
+        <div
+          className={styles.title}
+          style={{ color: `${props.error ? "red" : ""}` }}
+        >
+          Categorization
+        </div>
+        <div className={styles.starRating}>
+          {[...Array(5)].map((star, index) => {
+            return (
+              <button
+                type="button"
+                name="categorization"
+                key={index}
+                className={
+                  ++index <= (inputValue.hover || props.rating)
+                    ? styles.on
+                    : styles.off
+                }
+                onClick={(e) => props.clickHandler(e, index)}
+                onMouseEnter={() =>
+                  setInputValue({ ...inputValue, hover: index })
+                }
+                onMouseLeave={() =>
+                  setInputValue({ ...inputValue, hover: props.rating })
+                }
+              >
+                <div className={styles.star}>
+                  {index <= (inputValue.hover || props.rating) ? (
+                    <StarIcon sx={{ fontSize: "20px" }} />
+                  ) : (
+                    <StarOutlineIcon sx={{ fontSize: "20px" }} />
+                  )}
+                </div>
+              </button>
+            );
+          })}
+        </div>
       </div>
-    </div>
+      {props.error && (
+        <p style={{ color: "red", fontSize: "12px" }}>
+          Categorization is required
+        </p>
+      )}
+    </>
   );
 };
