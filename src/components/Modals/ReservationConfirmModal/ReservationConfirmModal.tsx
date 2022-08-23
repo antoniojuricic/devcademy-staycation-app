@@ -1,12 +1,45 @@
 import { Box, Button, Modal } from "@mui/material";
 import styles from "./ReservationConfirmModal.module.css";
 
+export interface AccData {
+    id:               string;
+    title:            string;
+    subtitle:         string;
+    description:      string;
+    shortDescription: string;
+    type:             string;
+    categorization:   number;
+    personCount:      number;
+    imageUrl:         string;
+    freeCancelation:  boolean;
+    price:            number;
+    location:         Location;
+    locationID:       string;
+    capacity:         number;
+}
+
+export interface Location {
+    id:         string;
+    name:       string;
+    imageUrl:   string;
+    postalCode: number;
+    properties: number;
+}
+
+type bookingData = {
+    name: string;
+    email: string;
+    guests: string;
+    checkIn: string;
+    checkOut: string;
+}
+
 type Props = {
   openModal: boolean;
   closeHandler: () => void;
   confirmBooking: () => void;
-  accData: any;
-  bookingData: any;
+  accData: AccData;
+  bookingData: bookingData;
 };
 
 const ReservationConfirmModal = (props: Props) => {
@@ -27,7 +60,7 @@ const ReservationConfirmModal = (props: Props) => {
         <div className={styles.info}>
           {props.accData.title}
           <br />
-          {props.bookingData.personCount} guests <br />
+          {props.bookingData.guests} guests <br />
           {props.bookingData.checkIn} - {props.bookingData.checkOut} <br />
           {props.accData.type} <br />
           {props.accData.location.name} <br />

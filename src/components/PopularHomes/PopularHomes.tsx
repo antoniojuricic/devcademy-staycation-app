@@ -19,7 +19,8 @@ const PopularHomes = () => {
       {error && <p>{error.message}</p>}
       {!loading &&
         !error &&
-        response?.data
+        response &&
+        response.data
           .filter((place: any, index: number) => index < 4)
           .map((place: any) => (
             <Grid item xs={3} key={place.id}>

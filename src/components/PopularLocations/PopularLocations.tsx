@@ -22,7 +22,8 @@ const PopularLocations = () => {
       {error && <p>{error.message}</p>}
       {!loading &&
         !error &&
-        response?.data
+        response &&
+        response.data
           .filter((city: any, index: number) => index < 5)
           .map((city: any, index: number) => (
             <Grid item xs={index < 2 ? 6 : 4} key={city.id}>

@@ -39,11 +39,11 @@ const NewPlaceForm = () => {
       setFormValues({
         ...formValues,
         ...state.place,
-        location: state.place.location?.name,
-        postalCode: state.place.location?.postalCode,
-        imageURL: state.place?.imageUrl,
-        freeCancellation: state.place?.freeCancelation,
-        personCount: state.place?.capacity,
+        location: state.place.location.name,
+        postalCode: state.place.location.postalCode,
+        imageURL: state.place.imageUrl,
+        freeCancellation: state.place.freeCancelation,
+        personCount: state.place.capacity,
       });
     }
   }, []);

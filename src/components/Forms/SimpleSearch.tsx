@@ -27,7 +27,7 @@ const SimpleSearch = () => {
     navigate("/location", { state: { location: result } });
   }
 
-  const handleChange = (event: any) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormValues({ ...formValues, [event.target.name]: event.target.value });
   };
 
@@ -39,8 +39,8 @@ const SimpleSearch = () => {
   const [locationData, setLocationData] = useState<Locations[]>([]);
 
   useEffect(() => {
-    if (response?.data) {
-      let locations = response?.data.map((location: any) => ({
+    if (response) {
+      let locations = response.data.map((location: any) => ({
         name: location.id,
         value: location.name,
       }));

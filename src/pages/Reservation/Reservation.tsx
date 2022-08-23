@@ -19,17 +19,17 @@ const Reservation = () => {
       {response && (
         <div className={styles.content}>
           <div className={styles.form}>
-            <ReservationForm data={response?.data} />
+            <ReservationForm data={response.data} />
           </div>
           <div className={styles.card}>
             <ReservationCard
-              title={response?.data.title}
-              type={response?.data.type}
-              rating={response?.data.categorization}
-              image={response?.data.imageUrl}
-              price={response?.data.price}
-              location={response?.data.location.name}
-              postalCode={response?.data.location.postalCode}
+              title={response.data.title}
+              type={response.data.type}
+              rating={response.data.categorization}
+              image={response.data.imageUrl}
+              price={response.data.price}
+              location={response.data.location.name}
+              postalCode={response.data.location.postalCode}
             />
           </div>
         </div>

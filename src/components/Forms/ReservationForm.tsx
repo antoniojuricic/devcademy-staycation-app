@@ -3,7 +3,32 @@ import { useState, useEffect } from "react";
 import useAxios from "../../hooks/useAxios";
 import ReservationConfirmModal from "../Modals/ReservationConfirmModal/ReservationConfirmModal";
 
-const ReservationForm = ({ data }: { data: any }) => {
+interface AccData {
+    id:               string;
+    title:            string;
+    subtitle:         string;
+    description:      string;
+    shortDescription: string;
+    type:             string;
+    categorization:   number;
+    personCount:      number;
+    imageUrl:         string;
+    freeCancelation:  boolean;
+    price:            number;
+    location:         Location;
+    locationID:       string;
+    capacity:         number;
+}
+
+interface Location {
+    id:         string;
+    name:       string;
+    imageUrl:   string;
+    postalCode: number;
+    properties: number;
+}
+
+const ReservationForm = ({ data }: { data: AccData }) => {
   const [formValues, setFormValues] = useState({
     name: "",
     email: "",
@@ -49,7 +74,7 @@ const ReservationForm = ({ data }: { data: any }) => {
     }
   }, [error, response]);
 
-  const handleChange = (event: any) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormValues({ ...formValues, [event.target.name]: event.target.value });
     setFormValid(true);
   };

@@ -12,35 +12,41 @@ const AccommodationDetails = () => {
     url: "/Accomodations/" + id,
   });
 
-  if (loading) return <h1>Loading...</h1>;
-
   return (
     <div className={styles.container}>
-      <img className={styles.image} src={response?.data.imageUrl} />
-      <div className={styles.content}>
-        <div className={styles.mainInfo}>
-          <div className={styles.inline}>
-            <div className={styles.title}>{response?.data.title}</div>
-            <Categorization rating={response?.data.categorization} />
-          </div>
-          <div className={styles.subtitle}>{response?.data.subtitle}</div>
-          {response?.data.freeCancellation && (
-            <div className={styles.cancellationPlaceholder}>
-              <img src={calendar} />
-              Free cancellation available
+      {loading && <p>Loading...</p>}
+      {error && <p>{error.message}</p>}
+      {response && (
+        <div>
+          <img className={styles.image} src={response.data.imageUrl} />
+          <div className={styles.content}>
+            <div className={styles.mainInfo}>
+              <div className={styles.inline}>
+                <div className={styles.title}>{response.data.title}</div>
+                <Categorization rating={response.data.categorization} />
+              </div>
+              <div className={styles.subtitle}>{response.data.subtitle}</div>
+              {response.data.freeCancellation && (
+                <div className={styles.cancellationPlaceholder}>
+                  <img src={calendar} />
+                  Free cancellation available
+                </div>
+              )}
+              <div className={styles.description}>
+                {response.data.description}
+              </div>
             </div>
-          )}
-          <div className={styles.description}>{response?.data.description}</div>
+            <PropertyInfo
+              id={response.data.id}
+              personCount={response.data.personCount}
+              type={response.data.type}
+              price={response.data.price}
+              location={response.data.location.name}
+              postalCode={response.data.location.postalCode}
+            />
+          </div>
         </div>
-        <PropertyInfo
-          id={response?.data.id}
-          personCount={response?.data.personCount}
-          type={response?.data.type}
-          price={response?.data.price}
-          location={response?.data.location.name}
-          postalCode={response?.data.location.postalCode}
-        />
-      </div>
+      )}
     </div>
   );
 };
