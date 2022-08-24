@@ -45,7 +45,7 @@ const MyPlaces = () => {
       <div className={styles.topBar}>
         <h4 className={styles.title}>My Places</h4>
 
-        <Link to="/add-new-place">
+        <Link to="new">
           <MediumButton text="add new place" />
         </Link>
       </div>

@@ -12,6 +12,7 @@ type Props = {
   required?: boolean;
   error?: boolean;
   helperText?: string;
+  fullWidth?: boolean;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
